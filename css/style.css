@@ -163,45 +163,51 @@ section {
 .home-img {
   position: relative;
   flex-shrink: 0;
-  width: 32rem;
-  height: 32rem;
+  width: 38rem;
+  height: 42rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.img-ring {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  padding: 0.6rem;
-  background: var(--gradient);
-  box-shadow: 0 0 6rem rgba(34, 197, 94, 0.25);
-  animation: float 5s ease-in-out infinite;
+.home-img::before {
+  content: "";
+  position: absolute;
+  inset: -6rem;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(34, 197, 94, 0.18), transparent 60%),
+    radial-gradient(circle at 60% 60%, rgba(6, 182, 212, 0.15), transparent 55%);
+  z-index: 0;
 }
 
-.img-ring img {
+.profile-photo {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  object-position: top center;
   display: block;
-  background: var(--second-bg-color);
+  -webkit-mask-image: radial-gradient(ellipse 62% 70% at center 42%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 62% 70% at center 42%, #000 55%, transparent 100%);
+  animation: float 5s ease-in-out infinite;
 }
 
 .photo-fallback {
   display: none;
   position: absolute;
-  inset: 0.6rem;
-  border-radius: 50%;
+  inset: 0;
+  z-index: 1;
   align-items: center;
   justify-content: center;
-  background: var(--card-color);
   font-size: 9rem;
   color: var(--main-color);
+  -webkit-mask-image: radial-gradient(ellipse 55% 65% at center 42%, #000 50%, transparent 100%);
+  mask-image: radial-gradient(ellipse 55% 65% at center 42%, #000 50%, transparent 100%);
+  background: var(--card-color);
 }
 
-.home-img.no-photo .img-ring {
+.home-img.no-photo .profile-photo {
   visibility: hidden;
 }
 
@@ -691,8 +697,8 @@ section {
     margin-right: auto;
   }
   .home-img {
-    width: 22rem;
-    height: 22rem;
+    width: 24rem;
+    height: 26rem;
   }
 }
 
